@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sözleşme Cümle Bölücü</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Sözleşme Cümle Bölücü</h1>
+            <p>PDF sözleşmelerinizi yükleyin, her sayfayı solda ham metin, sağda bölünmüş cümleler olarak analiz edelim.
+            </p>
+        </header>
+
+        <div class="upload-area" id="drop-zone">
+            <div class="upload-content">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <h3>PDF Dosyasını Sürükleyip Bırakın</h3>
+                <p>veya seçmek için tıklayın</p>
+                <input type="file" id="file-input" accept="application/pdf" hidden>
+            </div>
+        </div>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>PDF İşleniyor, lütfen bekleyin...</p>
+        </div>
+
+        <div id="results-container" class="hidden">
+            <div style="display: flex; justify-content: flex-end; margin-bottom: 15px;">
+                <button id="new-doc-btn"
+                    style="padding: 10px 20px; background-color: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; transition: background-color 0.2s;">
+                    + Yeni Belge Yükle
+                </button>
+            </div>
+
+            <div id="legislation-info" class="legislation-card"></div>
+
+            <div class="navigation-controls">
+                <button id="prev-btn" disabled>Önceki Sayfa</button>
+                <span id="page-indicator">Sayfa 1 / 1</span>
+                <button id="next-btn" disabled>Sonraki Sayfa</button>
+            </div>
+
+            <div class="split-view">
+                <div class="panel">
+                    <h2>Ham Metin (Sayfa İçeriği)</h2>
+                    <div class="content-box" id="raw-text-box"></div>
+                </div>
+                <div class="panel">
+                    <h2>Cümlelere Ayrılmış Hali</h2>
+                    <div class="content-box" id="sentences-box"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js?v=5"></script>
+</body>
+
+</html>
